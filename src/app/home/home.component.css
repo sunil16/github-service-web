@@ -1,0 +1,47 @@
+.topnav {
+    margin: auto;
+    width: 40%;
+    padding: 40px;
+}
+.search-box{
+    border: 1px solid #0000;
+    width: 92%;
+    padding: 8px;
+    border-radius: 22px;
+    outline: none;
+    border-style: solid;
+    border-color: #ffffff;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+    box-sizing: border-box;
+}
+.submit-btn{
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 45px;
+    top: 7px;
+    font-size: 16px;
+    color: #8c8c8c;
+}
+form {
+  width: 92%;
+  position: relative;
+}
+.repo-sec{
+    border: 1px solid #eee;
+    box-shadow: 0px 0px 9px 0px #f7f5f5;
+    margin-bottom: 20px;
+}
+ul{
+    display: none ;
+}
+table td {
+  padding: 6px 10px;
+}
+.update_btn{
+    background: #5CC151;
+    border-style: unset;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #fff;
+}

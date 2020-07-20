@@ -1,0 +1,61 @@
+<div class="topnav">
+
+    <form>
+      <input class="search-box" type="text" placeholder="Enter username" name="search">
+      <button class="submit-btn" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+</div>
+<div class="container">
+<div class="row">
+  <div class="col-md-6 ">
+    <div class="repo-sec">
+  <table class="table">
+    <thead>
+
+      <tr>
+   <th style="border:none">List of Repository</th>
+ <th style="border:none"></th>
+ </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pageOfItems">
+
+
+      <td style="width:90%">{{item.name}}</td>
+      <td><button class="update_btn">Update</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+<button mat-raised-button class="btn btn-primary">Add Repo</button>
+</div>
+<div class="col-md-6 ">
+  <div class="repo-sec">
+    <table class="table">
+      <thead>
+
+        <tr>
+     <th style="border:none">List of Followers</th>
+
+   </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pageOfItems">
+
+
+        <td >{{item.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+
+</div>
+
+</div>
+
+</div>
+ <jw-pagination [pageSize]="6" [maxPages]="3" [items]="items" (changePage)="onChangePage($event)" style="position: absolute;bottom: 1px;left: 96px;"></jw-pagination>
+    <jw-pagination [pageSize]="6" [maxPages]="3" [items]="items" (changePage)="onChangePage($event)" style="position: absolute;bottom: 1px;
+       right: 96px;"></jw-pagination>
