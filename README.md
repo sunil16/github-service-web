@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Home
+![alt text](https://github.com/sunil16/github-service-web/blob/master/src/assets/home.png?raw=true)
+
+
+## Pagination
+![alt text](https://github.com/sunil16/github-service-web/blob/master/src/assets/pagination.png?raw=true)
+
+
+## Create New Repositories
+![alt text](https://github.com/sunil16/github-service-web/blob/master/src/assets/create_repo.png?raw=true)
+
+
+## Update Repositories Description
+![alt text](https://github.com/sunil16/github-service-web/blob/master/src/assets/update_repo.png?raw=true)

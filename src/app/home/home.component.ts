@@ -143,36 +143,4 @@ export class HomeComponent implements OnInit {
         })
       }
     }
-
-    // prev_page(page_type): void {
-    //   if(page_type=='repo' && this.prev_repo_link != ""){
-    //     this.service.getNextPage(this.prev_repo_link, page_type).subscribe(res=>{
-    //       console.log(res)
-    //       if()
-    //       this.repo = res.repository.repo
-    //       if('prev' in res.repository.links)
-    //         this.prev_repo_link = res.repository.links.prev.url
-    //       else
-    //         this.prev_repo_link = ""
-    //       if('next' in res.repository.links)
-    //         this.next_repo_link = res.repository.links.next.url
-    //       else
-    //         this.next_repo_link = ""
-    //     })
-    //   }
-    //   else if(page_type=='follw' && this.prev_follw_link != ""){
-    //     this.service.getNextPage(this.prev_follw_link, page_type).subscribe(res=>{
-    //       console.log(res)
-    //       this.followers = res.followers.followers;
-    //       if('prev' in res.followers.links)
-    //         this.prev_follw_link = res.followers.links.prev.url
-    //       else
-    //         this.prev_follw_link = ""
-    //       if('next' in res.followers.links)
-    //         this.next_follw_link = res.followers.links.next.url
-    //       else
-    //         this.next_follw_link = ""
-    //     })
-    //   }
-    // }
 }
