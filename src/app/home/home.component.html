@@ -1,61 +1,108 @@
 <div class="topnav">
-
-    <form>
-      <input class="search-box" type="text" placeholder="Enter username" name="search">
+    <form [formGroup]="searchForm" (ngSubmit)="searchName()">
+      <input class="search-box" type="text" formControlName="github_username" placeholder="Enter github username"  name="github_username" />
       <button class="submit-btn" type="submit"><i class="fa fa-search"></i></button>
     </form>
-
 </div>
-<div class="container">
-<div class="row">
-  <div class="col-md-6 ">
-    <div class="repo-sec">
-  <table class="table">
-    <thead>
-
-      <tr>
-   <th style="border:none">List of Repository</th>
- <th style="border:none"></th>
- </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of pageOfItems">
-
-
-      <td style="width:90%">{{item.name}}</td>
-      <td><button class="update_btn">Update</button></td>
-    </tr>
-    </tbody>
-  </table>
-
+<div style="width:90%;margin:auto;">
+  <div class="row" >
+    <div class="col-md-6 " *ngIf="repo.length > 0">
+      <button mat-raised-button class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">Add Repo</button>
+      <div class="repo-sec">
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="border:none">List of Repository(sorted by createdDate)</th>
+              <th style="border:none"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of repo">
+              <td style="width:90%" >
+                <p><b>Name:</b> {{item.name}}</p>
+                <p><b>Description:</b> {{item.description}}</p>
+              </td>
+              <td><button class="update_btn" data-toggle="modal" data-target="#updatemodel" (click)="currentRepo(item)">Update</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button mat-raised-button class="btn btn-primary" *ngIf='prev_repo_link != ""' (click)="nextPage('repo','prev')" >Prev</button>
+      <button mat-raised-button class="btn btn-primary float-right" *ngIf='next_repo_link != ""' (click)="nextPage('repo','next')">Next</button>
+    </div>
+    <div class="col-md-6" *ngIf="followers.length > 0">
+      <div class="repo-sec" >
+            <p style="text-align:right;" ><b>Top Follower Name:</b> {{top_follower.name}}</p>
+            <p style="text-align:right;" ><b>{{top_follower.name}}'s total Followers:</b> {{top_follower.followers}}</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="border:none">List of Followers(sorted by Name) </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of followers">
+            <td >
+              <p><b>Name:</b> {{item.login}}</p>
+                <p><b>Followers:</b> {{item.followers_url}}</p>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <button mat-raised-button class="btn btn-primary" *ngIf='prev_follw_link != ""' (click)="nextPage('follw','prev')" >Prev</button>
+      <button mat-raised-button class="btn btn-primary float-right" *ngIf='next_follw_link != ""' (click)="nextPage('follw','next')">Next</button>
+    </div>
+  </div>
 </div>
-<button mat-raised-button class="btn btn-primary">Add Repo</button>
-</div>
-<div class="col-md-6 ">
-  <div class="repo-sec">
-    <table class="table">
-      <thead>
+ <!-- Modal for createRepo-->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
 
-        <tr>
-     <th style="border:none">List of Followers</th>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title">Create New Repository</h4>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="newRepoForm" (ngSubmit)="createRepo()" style="width:100%;">
+            <input  type="text" formControlName="name" placeholder="Enter name"  name="name" />
+            <input  type="text" formControlName="description" placeholder="Enter description"  name="description" />
+            <input  type="text" formControlName="git_username" placeholder="Enter github username or email-id"  name="git_username" />
+            <input  type="password" formControlName="git_password" placeholder="Enter github password"  name="git_password" />
+            <button class="btn btn-primary" type="submit">submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
 
-   </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of pageOfItems">
+    </div>
+  </div>
 
+ <!-- Modal for update description-->
+  <div class="modal fade" id="updatemodel" role="dialog">
+    <div class="modal-dialog">
 
-        <td >{{item.name}}</td>
-      </tr>
-      </tbody>
-    </table>
-</div>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modal-title">Update description of repository</h4>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="updateRepoForm" (ngSubmit)="updateRepo()" style="width:100%;">
+            <input  type="text" formControlName="name" placeholder="Enter name"  name="name" [value]='current_repo_name' disabled />
+            <input  type="text" formControlName="description" placeholder="Enter description"  name="description" [value]='current_desc'/>
+            <input  type="text" formControlName="git_username" placeholder="Enter github username or email-id"  name="git_username" />
+            <input  type="password" formControlName="git_password" placeholder="Enter github password"  name="git_password" />
+            <button class="btn btn-primary" type="submit">submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
 
-</div>
-
-</div>
-
-</div>
- <jw-pagination [pageSize]="6" [maxPages]="3" [items]="items" (changePage)="onChangePage($event)" style="position: absolute;bottom: 1px;left: 96px;"></jw-pagination>
-    <jw-pagination [pageSize]="6" [maxPages]="3" [items]="items" (changePage)="onChangePage($event)" style="position: absolute;bottom: 1px;
-       right: 96px;"></jw-pagination>
+    </div>
+  </div>

@@ -5,7 +5,7 @@
 }
 .search-box{
     border: 1px solid #0000;
-    width: 92%;
+    width: 100%;
     padding: 8px;
     border-radius: 22px;
     outline: none;
@@ -18,13 +18,13 @@
     background: transparent;
     border: none;
     position: absolute;
-    right: 45px;
+    right: 10px;
     top: 7px;
     font-size: 16px;
     color: #8c8c8c;
 }
 form {
-  width: 92%;
+  width: 100%;
   position: relative;
 }
 .repo-sec{
@@ -44,4 +44,21 @@ table td {
     border-radius: 6px;
     font-size: 15px;
     color: #fff;
+}
+p {
+  margin-bottom: 0px;
+}
+.modal input{
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 100%;
+    margin-bottom: 30px !important;
+    padding: 8px;
+    margin: auto;
+    display: block;
+}
+.modal-body {
+  padding: 40px;
 }
